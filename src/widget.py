@@ -1,4 +1,4 @@
-from masks import get_mask_card_number, get_mask_account
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
@@ -11,8 +11,9 @@ def mask_account_card(account_card: str) -> str:
 
 
 def get_date(date: str) -> str:
-    new_date = date[8:10]+"."+date[5:7]+"."+date[:4]
+    new_date = date[8:10] + "." + date[5:7] + "." + date[:4]
     return new_date
+
 
 if __name__ == "__main__":
     account_card = input("Введите карту или счет: ")
