@@ -18,6 +18,8 @@ def sort_by_date(list_dict: list, sorting: bool = True) -> list:
     """Функция, которая принимает список словарей и необязательный параметр, задающий порядок сортировки
     (по умолчанию — убывание). Функция возвращает новый список, отсортированный по дате (date)."""
 
+    """Аргумент sorting принимает значение по умолчанию True, чтобы сортировать список по убыванию"""
+
     list_sorted = sorted(list_dict, key=lambda k: k["date"], reverse=sorting)
     return list_sorted
 
