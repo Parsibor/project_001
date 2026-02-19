@@ -1,26 +1,26 @@
 from typing import Any
 
 
-def filter_by_state(list_dict: list, state: str = "EXECUTED") -> list:
+def filter_by_state(data_list: list, state: str = "EXECUTED") -> list:
     """Функция, которая принимает список словарей и опционально значение для ключа state (по умолчанию 'EXECUTED').
     Функция возвращает новый список словарей, содержащий только те словари, у которых ключ state соответствует
     указанному значению."""
     new_list: list[Any] = []
 
-    for dict in list_dict:
+    for dict in data_list:
         if dict["state"] == state:
             new_list.append(dict)
 
     return new_list
 
 
-def sort_by_date(list_dict: list, sorting: bool = True) -> list:
+def sort_by_date(data_list: list, sorting: bool = True) -> list:
     """Функция, которая принимает список словарей и необязательный параметр, задающий порядок сортировки
     (по умолчанию — убывание). Функция возвращает новый список, отсортированный по дате (date)."""
 
     """Аргумент sorting принимает значение по умолчанию True, чтобы сортировать список по убыванию"""
 
-    list_sorted = sorted(list_dict, key=lambda k: k["date"], reverse=sorting)
+    list_sorted = sorted(data_list, key=lambda k: k["date"], reverse=sorting)
     return list_sorted
 
 
