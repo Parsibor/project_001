@@ -7,10 +7,10 @@ def mask_account_card(account_card: str) -> str:
     Maestro 7000792289606361, или Счет 73654108430135874305."""
 
     if account_card[:4].lower() == "счет":
-        mask_account = "Счет " + get_mask_account(account_card[-20:])
+        mask_account = "Счет " + str(get_mask_account(account_card[-20:]))
         return mask_account
     else:
-        mask_card = account_card[0:-16] + " " + get_mask_card_number(account_card[-16:])
+        mask_card = str(account_card[0:-16]) + " " + str(get_mask_card_number(account_card[-16:]))
         return mask_card
 
 
