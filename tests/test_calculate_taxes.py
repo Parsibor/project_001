@@ -19,40 +19,24 @@ def test_calculate_tax_price_under_zero():
     with pytest.raises(ValueError, match='Неверная цена'):
         calculate_tax(-1, 1)
 
+def test_calculate_tax_price_zero():
+    with pytest.raises(ValueError, match='Неверная цена'):
+        calculate_tax(0, 1)
+
 def test_calculate_tax_tax_rate_under_limit():
     with pytest.raises(ValueError, match='Неверный налоговый процент'):
         calculate_tax(12, -1)
         calculate_tax(12, 100)
         calculate_tax(12, 101)
 
-def test_calculate_tax_discount():
-    pass
 
 
+@pytest.mark.parametrize("price, tax_rate, discount, rounder", [('100', 5, 20, 2),
+                                                                (200, '12', 4, 2),
+                                                                (400, 3, '23', 3),
+                                                                (213, 12, 43, '1')])
 
+def test_calculate_tax_wrong_type(price, tax_rate, discount, rounder):
+    with pytest.raises(TypeError):
+        calculate_tax(price, tax_rate, discount, rounder)
 
-
-
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_1():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax(12, 'd')
-#
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_2():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax('d', 12)
-#
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_3():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax([12], 5)
-#
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_4():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax((12,23,'ds'), 5)
-#
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_5():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax(12, ['d', 14, True])
-#
-# def test_calculate_tax_prices_and_tax_rate_is_not_float_6():
-#     with pytest.raises(TypeError, match='Аргумент не является числом'):
-#         calculate_tax(12, (12,'d,True'))
