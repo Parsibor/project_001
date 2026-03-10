@@ -21,14 +21,16 @@
 
 def get_mask_card_number(card_number: str) -> str:
     """Функция для создания маски номера карты в формате XXXX XX** **** XXXX"""
-    if len(str(card_number)) == 16:
-        for i in card_number:
+    if isinstance(card_number, str):  # Проверяем, точно ли в функцию передается строка или какой-то другой тип данных
+        if len(card_number) == 16:  # Точно ли в функцию передалась нужна длина номера карты
             card_mask = (
                 card_number[:4] + " " + card_number[4:6] + "** **** " + card_number[-4:]
             )  # Создаём маску по шаблону
-        return card_mask
+            return card_mask
+        else:
+            return "Введено неверное количество символов номера карты. Должно быть 16."
     else:
-        return "Введено неверное количество символов номера карты. Должно быть 16."
+        raise TypeError("Ошибка типа входных данных")
 
 
 def get_mask_account(account_number: str) -> str:
@@ -37,8 +39,9 @@ def get_mask_account(account_number: str) -> str:
     return "**" + account_number[-4:]  # Возвращаем четыре последних символа счёта со двумя звёздочками спереди
 
 
-if __name__ == "__main__":
-    card_number = input("Введите номер карты: ")
-    account_number = input("Введите номер счета: ")
-    print(get_mask_card_number(card_number))
-    print(get_mask_account(account_number))
+# ----------------------------------------------------------------------------------------------
+# if __name__ == "__main__":
+#     card_number = input("Введите номер карты: ")
+#     account_number = input("Введите номер счета: ")
+#     print(get_mask_card_number(card_number))
+#     print(get_mask_account(account_number))
