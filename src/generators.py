@@ -152,8 +152,8 @@ def card_number_generator(num_begin, num_end):
 #
 #     print('#' * 40)
 #
-#     for card_number in card_number_generator(99999999999999988, 9999999999999999):
-#         print(card_number)
+    # for card_number in card_number_generator(505, 507):
+    #     print(card_number)
 #
 #
 # #-----------------------------------------------------------------------------------------
